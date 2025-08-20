@@ -122,7 +122,7 @@ def evaluation(args, model, tokenizer):
             model, tokenizer=tokenizer, task=args.task, num_fewshot=args.num_fewshot, output_path=args.result_path, log=True
         )
     else:
-        for i, t in enumerate(args.tasks):
+        for i, t in enumerate(args.task):
             evaluate_fewshot(
                 model, tokenizer=tokenizer, task=t, num_fewshot=args.num_fewshot, eval_batch_size=args.eval_batch_size, output_path=args.result_path, log=True
             )
@@ -299,8 +299,19 @@ def run_hcsmoe(
     torch.save(model.state_dict(), output_path+"/model.pth")
     torch.cuda.empty_cache()
 
+    # save as hf checkpoint
+    model_output_path = output_path + "/hf_model"
+    if not os.path.exists(model_output_path):
+        os.makedirs(model_output_path)
+    try:
+        model.save_pretrained(model_output_path, safe_serialization=False)
+        tokenizer.save_pretrained(model_output_path)
+    except Exception as e:
+        import pdb; breakpoint()
+        pass
+
     ### 6. Evaluation
-    evaluation(args, model, tokenizer)
+    # evaluation(args, model, tokenizer)
 
 if __name__ == "__main__":
     Fire(run_hcsmoe)

@@ -21,6 +21,8 @@ This repository is written based on the codes in the [GitHub](https://github.com
 1. Install basic packages. `pip install -r requirements.txt`
 2. Install `lm-eval`. [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
 
+NOTE: I got this working with updated requirements and git commit hash: 68c3a811715ca86101f88c0044665bb70ad447f6
+
 
 ## Dataset Preparation
 Please download the C4 training data c4-train.00000-of-01024.json from [allenai/c4](https://huggingface.co/datasets/allenai/c4/blob/main/en/c4-train.00000-of-01024.json.gz).
