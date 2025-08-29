@@ -2,8 +2,8 @@ export NCCL_P2P_DISABLE=0
 export CUDA_LAUNCH_BLOCKING=1
 export TORCH_USE_CUDA_DSA=1
 export TOKENIZERS_PARALLELISM="false"
-export CUDA_VISIBLE_DEVICES=0,1
-OUTPUT_PATH="results/mixtral-instruct"
+export CUDA_VISIBLE_DEVICES=4,5
+OUTPUT_PATH="results/mixtral-instruct-cluster-bugfix"
 
 
 accelerate launch --config_file static/finetune_config.yaml \
@@ -12,7 +12,7 @@ accelerate launch --config_file static/finetune_config.yaml \
   --model_name="mistralai/Mixtral-8x7B-Instruct-v0.1" \
   --dominant="no" \
   --similarity_base="expert-output" \
-  --cluster="hirarchical" \
+  --cluster="hierarchical" \
   --linkage="average" \
   --merge="freq" \
   --num_average_groups=4 \

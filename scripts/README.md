@@ -1,3 +1,21 @@
+# fix I used for lm-eval-harness
+(.venv) mikel@cerebras-apr-2:/mlf7-shared/mikel/HC-SMoE/lm-evaluation-harness$ git diff
+diff --git a/lm_eval/models/__init__.py b/lm_eval/models/__init__.py
+index 8582f019..6b28707e 100644
+--- a/lm_eval/models/__init__.py
++++ b/lm_eval/models/__init__.py
+@@ -3,7 +3,7 @@ from . import (
+     api_models,
+     dummy,
+     gguf,
+-    hf_audiolm,
++    # hf_audiolm,
+     hf_steered,
+     hf_vlms,
+     huggingface,
+
+for commit hash: 68c3a811715ca86101f88c0044665bb70ad447f6
+
 # Argument Document
 
 - `task`: The tasks to evaluate on.
